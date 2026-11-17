@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b1220">
+<title>مراقب الأسواق</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#0b1220;color:white;font-family:Arial;padding:18px}
+header{font-size:23px;font-weight:bold;margin:20px 0}
+.card{background:#142238;padding:18px;border-radius:16px;margin:14px 0}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stat{background:#0f1b2d;padding:14px;border-radius:12px}
+button{background:#24527b;color:white;border:0;padding:12px;border-radius:10px;flex:1}
+nav{display:flex;gap:8px;margin:20px 0}
+.asset{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid #334}
+small,p{color:#9aabc1}
+input{width:100%;padding:12px;background:#0f1b2d;color:white;border:1px solid #334;border-radius:10px}
+.up{color:#55d99a}
+</style>
+</head>
+<body>
+<header>📈 مراقب الأسواق</header>
+<div class="card">
+<p>لوحة متابعة الأسواق</p>
+<h2>مرحباً بك</h2>
+<p>المغرب والأسواق العالمية</p>
+</div>
+<div class="stats">
+<div class="stat">الأسواق<b>2</b></div>
+<div class="stat">أصول المتابعة<b>6</b></div>
+</div>
+<nav>
+<button onclick="show('markets')">الأسواق</button>
+<button onclick="show('banks')">البنوك الرقمية</button>
+<button onclick="show('news')">الأخبار</button>
+</nav>
+<section id="markets" class="card">
+<h3>الأسواق المالية</h3>
+<input placeholder="ابحث عن سهم" oninput="filter(this.value)">
+<div id="assets">
+<div class="asset"><b>MASI</b><span class="up">+0.8%</span></div>
+<div class="asset"><b>Attijariwafa Bank</b><span>—</span></div>
+<div class="asset"><b>BCP</b><span>—</span></div>
+<div class="asset"><b>S&P 500</b><span class="up">+0.4%</span></div>
+<div class="asset"><b>NASDAQ</b><span>−0.2%</span></div>
+<div class="asset"><b>PayPal</b><span>—</span></div>
+</div>
+</section>
+<section id="banks" class="card" hidden>
+<h3>البنوك الرقمية</h3>
+<div class="asset">PayPal</div>
+<div class="asset">Wise</div>
+<div class="asset">Revolut</div>
+</section>
+<section id="news" class="card" hidden>
+<h3>الأخبار والتنبيهات</h3>
+<p>ستظهر الأخبار هنا بعد ربط مصادر البيانات.</p>
+</section>
+<p>نسخة تجريبية · الأسعار ليست حية · MAD / USD</p>
+<script>
+function show(id){
+document.querySelectorAll('section').forEach(s=>s.hidden=true);
+document.getElementById(id).hidden=false;
+}
+function filter(q){
+document.querySelectorAll('#assets .asset').forEach(a=>{
+a.style.display=a.innerText.toLowerCase().includes(q.toLowerCase())?'flex':'none';
+});
+}
+</script>
+</body>
+</html>
